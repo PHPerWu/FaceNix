@@ -2,6 +2,7 @@
 //引入PHPMailer的核心文件 使用require_once包含避免出现PHPMailer类重复定义的警告
 require_once("class.phpmailer.php"); 
 require_once("class.smtp.php");
+
 //示例化PHPMailer核心类
 $mail = new PHPMailer();
  
@@ -24,9 +25,9 @@ $mail->Helo = 'Hello smtp.qq.com Server';
 //设置发件人的主机域 可有可无 默认为localhost 内容任意，建议使用你的域名
 $mail->Hostname = 'facenix.com';
 //设置发送的邮件的编码 可选GB2312 我喜欢utf-8 据说utf8在某些客户端收信下会乱码
-$mail->CharSet = 'GB2312';
+$mail->CharSet = 'utf-8';
 //设置发件人姓名（昵称） 任意内容，显示在收件人邮件的发件人邮箱地址前的发件人姓名
-$mail->FromName = '吴启帆';
+$mail->FromName = '深圳斐视科技官网';
 //smtp登录的账号 这里填入字符串格式的qq号即可
 $mail->Username ='2375037953';
 //smtp登录的密码 这里填入“独立密码” 若为设置“独立密码”则填入登录qq的密码 建议设置“独立密码”
@@ -36,13 +37,14 @@ $mail->From = '2375037953@qq.com';
 //邮件正文是否为html编码 注意此处是一个方法 不再是属性 true或false
 $mail->isHTML(true); 
 //设置收件人邮箱地址 该方法有两个参数 第一个参数为收件人邮箱地址 第二参数为给该地址设置的昵称 不同的邮箱系统会自动进行处理变动 这里第二个参数的意义不大
-$mail->addAddress('443552864@qq.com');
+$mail->addAddress('443552864@qq.com','phper@facenix.com');
 //添加多个收件人 则多次调用方法即可
 $mail->addAddress('phper@facenix.com');
 //添加该邮件的主题
-$mail->Subject = '网站留下的留言';
+$mail->Subject = 'From FaceNix.com';
 //添加邮件正文 上方将isHTML设置成了true，则可以是完整的html字符串 如：使用file_get_contents函数读取本地的html文件
-$mail->Body = $_POST['name'];
+$content='name：'.$_POST['Name'].'</br>tel：'.$_POST['Phone'].'</br>'.$_POST['Message'].'</br>Email：'.$_POST['Email'];
+$mail->Body = $content;
 
  
  
