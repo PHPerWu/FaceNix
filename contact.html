@@ -17,7 +17,35 @@
 <!--google fonts-->
 <script src="js/jquery-1.11.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script>
 
+var myurl=GetQueryString("status");
+
+if(myurl !=null && myurl.toString().length>0)
+
+{
+	if(GetQueryString("status")==1)
+	{
+		alert("发送成功！");
+	}
+	else
+	{
+		alert("发送失败，请稍后再试！");
+	}
+
+}
+function GetQueryString(name)
+
+{
+
+     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
+
+     var r = window.location.search.substr(1).match(reg);
+
+     if(r!=null)return  unescape(r[2]); return null;
+
+}
+</script>
 </head>
 <body>
 <!--header-top start here-->
@@ -104,7 +132,7 @@
 
 				</div>
 				<div class="col-md-8 contact-right">
-					<form action="http://localhost/mail.php" method="post">
+					<form  action="http://localhost/mail.php" method="post" >
 						<input type="text" name="Name" placeholder="姓名（单位名称）">
                         <input type="text" class="email" name="Email" placeholder="Email">
                         <input type="text" class="in-phone" name="Phone" placeholder="联系电话">

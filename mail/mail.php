@@ -55,8 +55,9 @@ $status = $mail->send();
 
 //简单的判断与提示信息
 if($status) {
- echo '发送邮件成功'+$_POST['name']+' age:'+$_POST['age'];
+ header("Location: http://www.facenix.com/contact.html?status=1"); 
 }else{
- echo '发送邮件失败，错误信息未：'.$mail->ErrorInfo;
+ header("Location: http://www.facenix.com/contact.html?status=0"); 
 }
+
 ?>
